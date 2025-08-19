@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airbnb Navbar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav-item {
+      margin: 0 20px;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      position: relative;
+      color: #555;
+    }
+
+    .nav-item.active {
+      color: black;
+      font-weight: bold;
+    }
+
+    .nav-item.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: black;
+      border-radius: 2px;
+    }
+
+    /* Content section */
+    .tab-content {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      background: #f9f9f9;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="nav-item active" data-tab="homes">🏠 Homes</div>
+    <div class="nav-item" data-tab="experiences">🎈 Experiences</div>
+    <div class="nav-item" data-tab="services">🔔 Services</div>
+  </div>
+
+  <div id="homes" class="tab-content active">
+    <h2>Find the perfect home</h2>
+    <p>Search for unique stays, cabins, beach houses, and more.</p>
+  </div>
+
+  <div id="experiences" class="tab-content">
+    <h2>Discover experiences</h2>
+    <p>Join unique activities led by local hosts.</p>
+  </div>
+
+  <div id="services" class="tab-content">
+    <h2>Explore services</h2>
+    <p>Book travel services and enjoy seamless trips.</p>
+  </div>
+
+  <script>
+    const navItems = document.querySelectorAll(".nav-item");
+    const contents = document.querySelectorAll(".tab-content");
+
+    navItems.forEach(item => {
+      item.addEventListener("click", () => {
+        // Remove active class from all
+        navItems.forEach(nav => nav.classList.remove("active"));
+        contents.forEach(content => content.classList.remove("active"));
+
+        // Add active class to clicked tab
+        item.classList.add("active");
+        document.getElementById(item.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+</body>
+</html>
